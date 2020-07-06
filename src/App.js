@@ -1,25 +1,35 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+import "bootstrap/dist/css/bootstrap.min.css"
+import './assets/theme/mobile/css/common.css';
+import './assets/theme/mobile/css/home.css';
+
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import MainPage from './layouts/MainPage.js'
+import routes from './routes.js'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router basename={process.env.REACT_APP_BASENAME || "http://localhost/"}>
+      <div>
+	{routes.map((route, index) => {
+	  return (
+	    <Route
+	      key={index}
+	      path={route.path}
+	      exact={route.exact}
+	      component={props => {
+		return (
+		  <route.layout {...props}>
+		    <route.component {...props} />
+		  </route.layout>
+		);
+	      }}
+	    />
+	  );
+	})}
+      </div>
+    </Router>
   );
 }
 
