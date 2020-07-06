@@ -1,0 +1,24 @@
+    <Router>
+      <div>
+
+        <NavBar/>
+        <div className="container-fluid">
+          <div className="row">
+            <SideBar/>
+            <Switch>
+              <Route path="/about">
+                <About />
+              </Route>
+              <Route path="/">
+              </Route>
+            </Switch>
+          </div>
+        </div>
+
+      </div>
+    </Router>
+
+
+  2 import { BrowserRouter as Router, Switch, Link, Route } from 'react-router-dom';
+  3 import SideBar from './components/SideBar/SideBar'
+  4 import NavBar from './components/NavBar/NavBar'
