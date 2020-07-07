@@ -141,7 +141,7 @@ function Hot() {
           </a>
           <a href="/info" className="home-application-item">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layers"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
-            <h3>成果</h3>
+            <h3>论文</h3>
           </a>
           <a href="/info" className="home-application-item">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
@@ -163,7 +163,7 @@ function News() {
           <div className="home-middle-title">今日推荐<a className="home-middle-title-more" href="contact">委托查找</a></div>
         </div>
        <div className="home-middle-content">
-         <div className="lnews-cell" data-news_id="bc657f8612e18ef0255f2c72ff355c14" data-feed_id="227149341" data-keywords="" data-tag="">
+         <div className="lnews-cell lnews-cell-width">
            <a className="item" href="info" target="_self" rel="nofollow">
              <div className="cell-bd">
                <div className="content">
@@ -178,7 +178,7 @@ function News() {
              </div>
            </a>
          </div>
-         <div className="lnews-cell" data-news_id="bc657f8612e18ef0255f2c72ff355c14" data-feed_id="227149341" data-keywords="" data-tag="">
+         <div className="lnews-cell lnews-cell-width">
            <a className="item" href="device" target="_self" rel="nofollow">
              <div className="cell-bd">
                <div className="content">

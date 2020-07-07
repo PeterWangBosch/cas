@@ -53,7 +53,7 @@ function MainNavbar() {
 const SubPage = ({ children, noNavbar, noFooter }) => (
     <div>
       {!noNavbar && <MainNavbar/>}
-      <div className = "row" style={{'padding-left':'210px'}}>
+      <div className = "row container-with-sidebar">
         {<SideBar/>}
         {children}
       </div>
