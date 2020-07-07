@@ -75,14 +75,12 @@ function Banner() {
 	this.ref('name')
 	this.field('tags_txt')
 
-        debugger;
 	let documents = docs();
 
 	documents.forEach(function (doc) {
 	  this.add(doc)
 	}, this)
       });
-      debugger;
       __result = idx.search(key);
       console.log(__result);
     }

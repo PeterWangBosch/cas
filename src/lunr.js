@@ -3485,7 +3485,6 @@ lunr.QueryParser.parseBoost = function (parser) {
      * This example returns an object, but the module
      * can return a function as the exported value.
      */
-    debugger;
     return lunr
   }))
 })();

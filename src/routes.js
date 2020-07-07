@@ -8,6 +8,7 @@ import Fellow from "./components/Fellow/Fellow.js"
 import DetailInfo from "./components/info/DetailInfo.js"
 import DeviceInfo from "./components/info/DeviceInfo.js"
 import ContactInfo from "./components/info/ContactInfo.js"
+import PeopleProfile from "./components/info/PeopleProfile.js"
 
 export default [
   {
@@ -32,6 +33,11 @@ export default [
   },
   {
     path: "/hot4",
+    layout: SubPage,
+    component: () => <PeopleProfile/>
+  },
+  {
+    path: "/people_profile",
     layout: SubPage,
     component: () => <DeviceInfo/>
   },
@@ -64,6 +70,11 @@ export default [
     path: "/contact",
     layout: SubPage,
     component: () => <ContactInfo/>
+  },
+  {
+    path: "/people_profile",
+    layout: SubPage,
+    component: () => <PeopleProfile/>
   },
   {
     path: "/docs",
