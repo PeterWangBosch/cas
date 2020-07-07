@@ -34,7 +34,7 @@ const info = {
 
 
     return (
-      <div className="card">
+      <div className="card" style={{ 'margin-top': '10px', 'margin-left': '10px' }}>
         <img class="card-img-top" src="..." alt=""/>
         <div className="card-body">
           <div className="text-center">

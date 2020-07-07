@@ -1,10 +1,16 @@
-  /*
-   * Sidebar
-   */
+@media screen and (max-width: 996px) {
+  .sidebar {
+    display: none;
+  }
+}
+  .sidebar {
+    box-sizing: content-box;
+  }
 
   .sidebar {
     position: fixed;
-    top: 0;
+    width: 200px;
+    top: 100px;
     bottom: 0;
     left: 0;
     z-index: 100; /* Behind the navbar */

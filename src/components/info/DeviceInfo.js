@@ -16,9 +16,8 @@ const info = {
   tags: ["硬X射线", "同步辐射光源", "SiP·ME2"]
 };
 
-
     return (
-      <div className="card">
+      <div className="card" style = {{ 'margin-top': '10px', 'margin-left': '10px' }}>
         <img class="card-img-top" src="..." alt=""/>
         <div className="card-body">
           <div className="text-center">

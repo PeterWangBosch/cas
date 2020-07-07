@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import PropTypes from "prop-types";
 
 import MainFooter from "../components/MainFooter.js";
+import SideBar from "../components/SideBar/SideBar.js";
 
 import lunr from '../lunr.js'
 
@@ -52,7 +53,10 @@ function MainNavbar() {
 const SubPage = ({ children, noNavbar, noFooter }) => (
     <div>
       {!noNavbar && <MainNavbar/>}
-      {children}
+      <div className = "row" style={{'padding-left':'210px'}}>
+        {<SideBar/>}
+        {children}
+      </div>
       {!noFooter && <MainFooter />}
     </div>
 );

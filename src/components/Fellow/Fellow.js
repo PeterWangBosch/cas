@@ -83,7 +83,7 @@ let people = [
 
 export default () => (
   <div className="row fellow-cards">
-    <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div className="col-lg-10 col-md-12 col-sm-12 col-xs-12" >
       <div className="card-columns">
 	{ people.map( (p, index) => {
           let desc = "";
