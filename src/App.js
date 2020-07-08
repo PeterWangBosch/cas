@@ -10,7 +10,7 @@ import routes from './routes.js'
 
 function App() {
   return (
-    <Router basename={ process.env.REACT_APP_BASENAME || "" }>
+    <Router basename={ process.env.REACT_APP_BASENAME || "/" }>
       <div>
 	{routes.map((route, index) => {
 	  return (

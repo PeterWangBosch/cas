@@ -422,15 +422,13 @@
 }
 .home-middle-content .lnews-cell .images .img{
     float: left;
-    width: calc(33% - 4px);
-    max-width: 120px;
-    
+    width: 90px;
+    height: 90px;
+
+    margin-right: 15px;
 }
 .home-middle-content .lnews-cell .images .img>img{
   width: 100%;
-}
-.home-middle-content .lnews-cell .images .img:not(:last-child){
-  margin-right: 5px;
 }
 
 .home-middle-content .lnews-cell .title{
