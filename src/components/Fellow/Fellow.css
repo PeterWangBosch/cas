@@ -13,7 +13,9 @@
 .text-fellow {
   font-size: 0.8rem;
   margin-left: 2rem;
-  background-color: yellow; 
+
+  background-color: rgba(255, 229, 100, 0.8);
+  color: #1a1a1a
 }
 
 .text-desc {

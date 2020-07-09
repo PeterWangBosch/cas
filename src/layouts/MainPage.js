@@ -5,18 +5,52 @@ import Fellow from '../components/Fellow/Fellow';
 
 import lunr from '../lunr.js'
 
-const info1 = {
-  title: "吸附灭活新型冠状病毒",
-  desc: "",
-  team: "中国科学院大连化学物理",
-  stat: "实验验证",
-  product: "具备生产能力", 
-  cop_mode:"寻找合作",
-  tags: ["新型冠状病毒", "灭活"] 
-};
+const device_db = (i) => {
+  const docs = [
+    {
+      title: "上海光源",
+      desc: "上海光源线站工程属于国家\“十二五\”重大科学基础设施建设项目，主要建设内容包括新建16条性能先进的光束线站、实验辅助系统、光源性能拓展、>建安工程及配套公用设施，完成了其中的硬X射线通用谱学线站、X光学测试线、用户数据中心建设",
+      team: "上海应用物理研究所",
+      location: "浦东张江高科技园区",
+      mark: "重大科学基础设施",
+      cop_mode:"对用户开放",
+      tags: ["硬X射线", "同步辐射光源", "SiP·ME2"]
+    }
+  ];
 
-const docs = () => {
+  return docs[i];
+}
+
+const project_db = (i) => {
+  const docs = [
+    {
+      title: "吸附灭活新型冠状病毒",
+      desc: "实验结果表明，该材料具有直接吸附灭活新冠病毒作用，灭活效率达96.5%至99.9%。在实验环境中，新冠病毒浓度为5微克/毫升，远高于实际场景中的>致病浓度。此类固体催化材料无毒，不溶于水及有机溶剂，可制成颗粒或担载于各种载体上，有望广泛应用于抗疫产品及日常空气和水净化用品上，实现对病毒吸附灭活",
+      team: "中国科学院大连化学物理研究所",
+      stat: "实验验证",
+      product: "具备生产能力",
+      cop_mode:"寻找合作",
+      tags: ["新型冠状病毒", "灭活"]
+    }
+  ];
+
+  return docs[i];
+}
+const people_db_index = (i) => {
   return [
+    {
+      index: "1",
+      tags: "氧碘激光 微波吸收材料 脉冲氟化氢化学激光器",
+    },
+    {
+      index: "2",
+      tags: "短波长化学激光 氧碘化学激光器 水煤气催化合成 侵蚀燃烧 熔铁催化剂"
+    }
+  ];
+}
+
+const people_db = (i) => {
+  const docs= [
   {
     name: "张存浩",
     tags_txt: "短波长化学激光 氧碘化学激光器 水煤气催化合成 侵蚀燃烧 熔铁催化剂",
@@ -33,16 +67,8 @@ const docs = () => {
     ],
   },
   {
-    name: "何国钟",
-    tags_txt: "aa"
-  },
-  {
-    name: "袁权",
-    tags_txt: ""
-  },
-  {
     name: "沙国河",
-    tags_txt: "bb氧碘激光 微波吸收材料 脉冲氟化氢化学激光器",
+    tags_txt: "氧碘激光 微波吸收材料 脉冲氟化氢化学激光器",
     img: "http://sourcedb.dicp.cas.cn/zw/zjrck/200908/P020180928241946735552.jpg",
     fellow: [
       "院士"
@@ -53,6 +79,7 @@ const docs = () => {
       "脉冲氟化氢化学激光器"
     ],
   }];
+  return docs[i];
 }
 
 var __result;
@@ -72,17 +99,18 @@ function Banner() {
 
       setFirst(false);
       var idx = lunr(function () {
-	this.ref('name')
-	this.field('tags_txt')
+	this.ref('index')
+	this.field('tags')
 
-	let documents = docs();
+	let indexes = people_db_index();
 
-	documents.forEach(function (doc) {
-	  this.add(doc)
+	indexes.forEach(function (i) {
+	  this.add(i)
 	}, this)
       });
       __result = idx.search(key);
-      console.log(__result[0].ref);
+      debugger;
+      //console.log( people_db( parseInt(__result[0].ref) ) );
       console.log(__result);
     }
 
