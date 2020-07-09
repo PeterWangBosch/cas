@@ -186,93 +186,85 @@ function Hot() {
 }
 
 function News() {
+  let news = [
+    {
+      title: "吸附灭活新型冠状病毒",
+      img: "http://sourcedb.dicp.cas.cn/zw/zjrck/200908/P020181113328063736780.jpg",
+      link: "/hot4",
+      category: "项目",
+      credit: "实验验证",
+      stat: "具备生产能力",
+      cop: "寻找合作"
+    },
+    {
+      title: "上海光源线站工程",
+      img: "",
+      link: "/hot4",
+      category: "设备",
+      credit: "投入试运行",
+      stat: "用户取得重要成果",
+      cop: "开放"
+    },
+    {
+      title: "纤维素、糖催化转化制乙二醇",
+      img: "",
+      link: "/hot4",
+      category: "论文",
+      credit: "实验验证",
+      stat: "可以实用",
+      cop: "寻找合作"
+    },
+    {
+      title: "纳米催化剂的可控制备",
+      img: "",
+      link: "/hot4",
+      category: "论文",
+      credit: "实验验证",
+      stat: "可以实用",
+      cop: "寻找合作"
+    },
+    {
+      title: "肼催化分解、无毒推进剂催化分解",
+      img: "",
+      link: "/hot4",
+      category: "论文",
+      credit: "实验验证",
+      stat: "可以实用",
+      cop: "寻找合作"
+    }
+  ];
   return (
       <div className="home-news">
         <div className="home-middle-title-wrap">
           <div className="home-middle-title">今日推荐<a className="home-middle-title-more" href="contact">委托查找</a></div>
         </div>
-       <div className="home-middle-content">
-         <div className="lnews-cell lnews-cell-width">
-           <div className="images">
-             <img className="img" src="http://sourcedb.dicp.cas.cn/zw/zjrck/200908/P020181113328063736780.jpg" alt=""></img>
-           </div>
-           <a className="item" href="/hot4" target="_self" rel="nofollow">
-             <div className="cell-bd">
-               <div className="content">
-                 <div className="title fixheight">吸附灭活新型冠状病毒</div>
-                 <div className="info">
-                   <span className="ltext"><a href="/info">项目</a></span>
-                   <span className="ltext">实验验证</span>
-                   <span className="ltext">具备生产能力</span> 
-                   <span className="ltext">寻找合作</span>
-                 </div>
-               </div>
-             </div>
-           </a>
-         </div>
-         <div className="lnews-cell lnews-cell-width">
-           <a className="item" href="/device" target="_self" rel="nofollow">
-             <div className="cell-bd">
-               <div className="content">
-                 <div className="title fixheight">上海光源线站工程</div>
-                 <div className="info">
-                   <span className="ltext"><a href="/info">设备</a></span>
-                   <span className="ltext">投入试运行</span>
-                   <span className="ltext">用户取得重要成果</span> 
-                   <span className="ltext">开放</span>
-                 </div>
-               </div>
-             </div>
-           </a>
-         </div>
-         <div className="lnews-cell lnews-cell-width">
-           <a className="item" href="info" target="_self" rel="nofollow">
-             <div className="cell-bd">
-               <div className="content">
-                 <div className="title fixheight">纤维素、糖催化转化制乙二醇</div>
-                 <div className="info">
-                   <span className="ltext"><a href="info">论文</a></span>
-                   <span className="ltext">实验验证</span>
-                   <span className="ltext">可以实用</span>
-                   <span className="ltext">寻找合作</span>
-                 </div>
-               </div>
-             </div>
-           </a>
-         </div>
-         <div className="lnews-cell lnews-cell-width">
-           <a className="item" href="info" target="_self" rel="nofollow">
-             <div className="cell-bd">
-               <div className="content">
-                 <div className="title fixheight">纳米催化剂的可控制备</div>
-                 <div className="info">
-                   <span className="ltext"><a href="info">论文</a></span>
-                   <span className="ltext">实验验证</span>
-                   <span className="ltext">可以实用</span>
-                   <span className="ltext">寻找合作</span>
-                 </div>
-               </div>
-             </div>
-           </a>
-         </div>
-         <div className="lnews-cell card" style={{'width': '100%'}}>
-           <a className="item" href="info" target="_self" rel="nofollow">
-             <div className="cell-bd">
-               <div className="content">
-                 <div className="title fixheight">肼催化分解、无毒推进剂催化分解</div>
-                 <div className="info">
-                   <span className="ltext"><a href="info">论文</a></span>
-                   <span className="ltext">实验验证</span>
-                   <span className="ltext">可以实用</span>
-                   <span className="ltext">寻找咨询</span>
-                 </div>
-               </div>
-             </div>
-           </a>
-         </div>
+        <div className="home-middle-content">
+         { 
+	   news.map((d, index) => {
+             return (
+	       <div className="lnews-cell lnews-cell-width">
+		 <div className="images">
+		   <img className="img" src={ d.img } alt=""></img>
+		 </div>
+		 <a className="item" href={ d.link } target="_self" rel="nofollow">
+		   <div className="cell-bd">
+		     <div className="content">
+		       <div className="title fixheight"> { d.title } </div>
+		       <div className="info">
+			 <span className="ltext"><a href={ d.link }>{ d.category }</a></span>
+			 <span className="ltext"> { d.credit } </span>
+			 <span className="ltext"> { d.stat } </span> 
+			 <span className="ltext"> { d.cop} </span>
+		       </div>
+		     </div>
+		   </div>
+		 </a>
+	       </div>);
+           })
+         }
        </div>
-     </div>
-  );
+     </div>);
+  
 }
 
 function MainPage() {
