@@ -1,8 +1,11 @@
-import React, { Component, useState } from 'react'
+import React, { Component, useState, useContext } from 'react'
 import { BrowserRouter as Router, Switch, Link, Route } from 'react-router-dom';
 import FellowSearch from '../components/Fellow/FellowSearch';
 import Fellow from '../components/Fellow/Fellow';
 import News from '../components/News';
+import NavBar from '../components/NavBar';
+
+import { SearchCtx } from '../App.js'
 
 import lunr from '../lunr.js'
 
@@ -83,14 +86,28 @@ const people_db = (i) => {
   return docs[i];
 }
 
-var __result;
+var msg = [
+  "收录院士 823 人",
+  "收录成果 8123 项",
+  "收录设备 8000 台"
+];
+var msg_ix = 0;
+
+function Resou() {
+             return(
+	       <div className="home-hot">
+		 <span className="resou"></span>
+		 <a href="/hot1">吸附灭活</a>
+		 <a href="/hot2">中科院大连化物所</a>
+		 <a href="/hot3">生物催化</a>
+		 <a href="/hot4">张涛</a>
+	       </div>);
+}
 
 function Banner() {
-    const [key, setKey] = useState("key");
-    const [first, setFirst] = useState("first");
-
+    const ctx = useContext(SearchCtx);
     const handleInput = event => {
-      setKey(event.target.value);
+      ctx.key.set(event.target.value);
     };
 
     const search = () => {
@@ -98,7 +115,6 @@ function Banner() {
       //console.log("--------");
       //console.log($.lunr);
 
-      setFirst(false);
       var idx = lunr(function () {
 	this.ref('index')
 	this.field('tags')
@@ -109,18 +125,30 @@ function Banner() {
 	  this.add(i)
 	}, this)
       });
-      __result = idx.search(key);
-      debugger;
+      let __result = idx.search(ctx.key.get);
+
       //console.log( people_db( parseInt(__result[0].ref) ) );
       console.log(__result);
     }
 
+    setInterval(()=>{
+      msg_ix = ++msg_ix % 3;
+    }, 1000);
+
+    var component = <Resou/>;
+
     return (
-	 <div className={ first ? 'home-top' : 'home-top-result' }>
-	   <div className="home-logo-wrap" style={{ display: first ? 'block' : 'none' }}>
-	     <h2>中科创新</h2>
-	     <h5>中国科学院产学研用信息平台</h5>
+	 <div className={ 'home-top' }>
+	   <div className="home-logo-wrap clearfix">
+	     <h2>连接中国科学院产学研用</h2>
 	   </div>
+           <ul className="search-nav clearfix">
+             <li className= { ctx.type.get == 0 ? "search-type active" : "search-type" } onClick={ ()=>{ ctx.type.set(0);} }>找机构</li>
+             <li className= { ctx.type.get == 1 ? "search-type active" : "search-type" } onClick={ ()=>{ ctx.type.set(1);} }>找专家</li>
+             <li className= { ctx.type.get == 2 ? "search-type active" : "search-type" } onClick={ ()=>{ ctx.type.set(2);} }>找成果</li>
+             <li className= { ctx.type.get == 3 ? "search-type active" : "search-type" } onClick={ ()=>{ ctx.type.set(3);} }>找需求</li>
+             <li className= { ctx.type.get == 4 ? "search-type active" : "search-type" } onClick={ ()=>{ ctx.type.set(4);} }>找设备</li>
+           </ul>
 	   <div action={search} id="V3_Index_S">
 	     <div className="home-input-outside-wrap">
 	       <div className="home-input-wrap">
@@ -129,13 +157,8 @@ function Banner() {
 	       <div className="home-search-icon" id="V3_Search_bt" onClick={search} style={{cursor: "pointer"}}> 
 		 <span className="btn" onClick={search}>查一下</span>
 	       </div>
-	       <div className="home-hot" style={{ display: first ? 'block' : 'none' }}>
-		 <span className="resou"></span>
-		 <a href="/hot1">吸附灭活</a>
-		 <a href="/hot2">中科院大连化物所</a>
-		 <a href="/hot3">生物催化</a>
-		 <a href="/hot4">张涛</a>
-	       </div>
+               <a rel="nofollow" className="adsearch-btn" href="/people" >多选<br/>搜索</a>
+               <Resou></Resou>
 	     </div>
 	   </div>
 	 </div>
@@ -237,12 +260,33 @@ function news() {
 
 }
 
-function MainPage() {
+function MainPage(props) {
+  const ctx = useContext(SearchCtx);
   return (
     <div>
+      <NavBar></NavBar>
       <Banner></Banner>
-      <Hot></Hot>
-      <News data={news()} title="今日推荐"></News>
+      <div className="row pl-4">
+        <div className="card col-lg-8">
+          <News data={news()} title= { ctx.first.get ? "今日推荐" : "搜索结果" }></News>
+        </div>
+        <div className="d-flex flex-column col-lg-4">
+          <div className="card bg-white mb-4">
+            <div className="card-header text-center">
+              <span>收录数据</span>
+            </div>
+            <div className="card-body">
+                <h6 className="card-title" style={{'font-size':'0.8rem'}}>院士专家 <span className="mr-1">853</span></h6>
+                <h6 className="card-title" style={{'font-size':'0.8rem'}}>院士专家 <span className="mr-1">853</span></h6>
+            </div>
+          </div>
+          <div className="card bg-white mb-4">
+            <div className="card-header text-center">
+              <span>科研机构</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

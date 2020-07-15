@@ -97,7 +97,7 @@ export default () => (
 	      <div className="card-body">
 		<h5 className="card-title">{p.name} <span className="text-fellow">{p.fellow[0]}</span></h5>
 		<p className="card-text text-desc">
-                  { desc }
+                  { desc } <a href="/people_profile" target="_self">详细>></a>
                 </p>
 	      </div>
               <div class="text-contact">
